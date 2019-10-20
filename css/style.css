@@ -9,13 +9,13 @@
 	width: 100%;
 }
 .card-left, .card-right{
-	height: 654px;
+	height: 750px;
 }
 .card-container-small{
-	background: rgb(212, 72, 41);
+	background: rgba(212, 72, 41,0.8);
 }
 .card-left{
-	background: rgb(212, 72, 41);
+	background: transparent;
 	-webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
 	-ms-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
 	clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
@@ -83,7 +83,7 @@
 }
 
 .container-form.inscription-form{
-	margin: 15px auto;
+	margin: 0px auto;
 }
 /*
 ================================================================================================
