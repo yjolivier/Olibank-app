@@ -32,7 +32,7 @@ session_start();
 					if ($emailexist == 0) {
 						//On compare les deux mots de passe
 						if ($_POST['mdp'] === $_POST['mdp2']) {
-							$mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+							$mdp = sha1($_POST['mdp']);
 							$insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenoms, mail, mdpass, date_inscription) VALUES(?, ?, ?, ?, NOW())");
 							$insertmbr->execute(array($nom, $prenoms, $email, $mdp));
 						}

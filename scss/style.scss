@@ -1,0 +1,109 @@
+/*
+	* card form generator
+	@link: https://bennettfeely.com/clippy/
+**/
+/**
+	*SCSS Variable
+*/
+$premary-color: #d44829;
+$secondary-color: #E4E4E4;
+
+.page-body.container-fluid{
+	margin: 0;
+}
+.card-container{
+	width: 100%;
+}
+.card-left, .card-right{
+	max-height: 800px;
+	height: 700px;
+}
+.card-container-small{
+	background: rgba(212, 72, 41,0.8);
+}
+.card-left{
+	background: transparent;
+	-webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+	-ms-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+	clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+}
+.card-right{
+	background-image: url('../img/back.jpg');
+  background-size: cover;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+	-ms-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+#formulaire{
+	width: 90%;
+	padding: 0 20px;
+}
+
+.container-form{
+	max-width: 550px;
+  margin: 100px auto;
+	padding: 20px;
+	padding-left: 0px;
+	font-size: 20px;
+}
+.container-form h1{
+	font-size: 4.5rem;
+  color: #fff;
+  font-family: montserrat;
+}
+.container-form p{
+	padding: 10px 0px;
+}
+.container-form p a{
+	text-decoration: none;
+	color: #fff;
+}
+.container-form p a:hover{
+	color: #d4d1d1;
+}
+.champdesaisir{
+	margin-top: 20px;
+	background-color: #3E2E2E;
+	border: none;
+	color: #c5ecfd;
+	padding: 15px;
+	width: 100%;
+	color: $secondary-color;
+}
+.form-bouton{
+	background: $secondary-color;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+	margin-top: 20px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #3E2E2E;
+	font-size: 20px;
+	transition: background 0.5s;
+}
+.form-bouton:hover{
+	background: rgb(180, 179, 179);
+}
+
+.container-form.inscription-form{
+	margin: 0px auto;
+}
+/*
+================================================================================================
+ Media queries
+================================================================================================
+*/
+@media screen and (max-width: 1024px) {
+	.container-form h1{
+	  font-size: 3.5rem;
+	}
+}
+@media screen and (max-width: 720px){
+	.card-right{
+		display: none;
+	}
+}

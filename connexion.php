@@ -12,11 +12,11 @@ catch (Exception $e) {
 
 if (isset($_POST['connexion'])) {
 	$mailconnect = htmlspecialchars($_POST['mailconnect']);
-	$mdpconnect = password_hash($_POST['mdpconnect'], PASSWORD_DEFAULT);
+	$mdpconnect = sha1($_POST['mdpconnect']);
 
 	if (!empty($_POST['mailconnect']) AND !empty($_POST['mdpconnect'])) {
 		if (filter_var($mailconnect, FILTER_VALIDATE_EMAIL)) {
-			$requser = $bdd->prepare("SELECT * FROM membres WHERE email = ? AND mdpass = ?");
+			$requser = $bdd->prepare("SELECT * FROM membres WHERE mail = ? AND mdpass = ?");
 			$requser->execute(array($mailconnect, $mdpconnect));
 			$userexist = $requser->rowCount();
 			if ($userexist == 1) {
@@ -50,7 +50,7 @@ if (isset($_POST['connexion'])) {
 						<form id="formulaire" method="POST" action="">
 						<div class="container-form">
 							<h1>Connectez vous ici</h1>
-							<input class="champdesaisir" type="text" name="mailconnect" placeholder="Adresse mail"> <br>
+							<input class="champdesaisir" type="email" name="mailconnect" placeholder="Adresse mail"> <br>
 							<input class="champdesaisir" type="password" name="mdpconnect" placeholder="Password"> <br>
 							<input class="form-bouton" name="connexion" type="submit" value="Se connecter" />
 							<p>
