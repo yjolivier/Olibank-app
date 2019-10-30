@@ -30,8 +30,17 @@
 					</nav>
 				</div>
 			</header>
-			<section>
-				
+			<section class="page-content row">
+				<div class="title col-12">
+					<h1>BIENVENU SUR VOTRE COMPTE PRIVE OLIVIER YAO</h1>
+				</div>
+				<div class="solde-container col-12">
+					<center>
+						<div class="solde-content">
+							<nav><h1>solde : </h1></nav>
+						</div>
+					</center>
+				</div>
 			</section>
 	</body>
 	<?php require 'footer.php'; ?>

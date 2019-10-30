@@ -139,6 +139,27 @@ header .btn-menu{
 header .btn-menu:hover{
 	color:$fird-color;
 }
+.title.col-12{
+	text-align: center;
+	color: $premary-color;
+	h1{
+		margin-top: 25px;
+		color: $premary-color;
+		font-weight: bold;
+	}
+}
+.solde-container{
+	.solde-content{
+		margin: 15px;
+		max-width: 550px;
+		padding: 40px;
+		background-color: $fird-color;
+		color: $premary-color;
+		text-align: left;
+		border-radius: 25px;
+		text-transform: uppercase;
+	}
+}
 /*
 ================================================================================================
  Media queries
