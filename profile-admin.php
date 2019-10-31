@@ -13,7 +13,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
 	//Convertir l'id en nombre
 	$getid = intval($_GET['id']);
-	$requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
+	$requser = $bdd->prepare("SELECT * FROM admin WHERE id = ?");
 	$requser->execute(array($getid));
 	$userinfo = $requser->fetch();
 ?>
@@ -33,15 +33,6 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 							</button>
 							<div class="collapse  navbar-collapse" id="collapse_target">
 								<ul class="navbar-nav">
-									<li class="nav-item">
-										<a class="nav-link" href="#">ACCUEIL</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">A PROPOS</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">CONTACTE</a>
-									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="deconnexion.php">Deconnexion</a>
 									</li>

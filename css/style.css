@@ -57,7 +57,7 @@
 }
 
 .container-form p {
-  padding: 10px 0px;
+  padding: 0px 0px;
 }
 
 .container-form p a {
@@ -165,6 +165,11 @@ header .btn-menu:hover {
   font-weight: bold;
 }
 
+/*
+================================================================================================
+ Page content
+================================================================================================
+*/
 .solde-container .solde-content {
   margin: 15px;
   max-width: 550px;
@@ -174,6 +179,52 @@ header .btn-menu:hover {
   text-align: left;
   border-radius: 25px;
   text-transform: uppercase;
+}
+
+table {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  width: 80%;
+  border: solid 1px #E4E4E4;
+  align: center;
+}
+table thead th {
+  padding: 10px;
+  font-size: 2.3em;
+  text-transform: uppercase;
+  background-color: #4B4242;
+  color: #E4E4E4;
+}
+table tbody th {
+  padding: 10px;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  background-color: #E4E4E4;
+  color: #4B4242;
+  text-align: center;
+}
+table tbody td {
+  padding: 10px;
+  font-size: 1.3em;
+  background-color: #E4E4E4;
+  color: #4B4242;
+}
+
+/*
+================================================================================================
+	Footer style
+================================================================================================
+*/
+footer.row {
+  height: 50px;
+  background-color: #d44829;
+  color: #E4E4E4;
+  font-size: 1.8em;
+  margin-top: 35px;
+  text-align: center;
+}
+footer.row p {
+  padding-top: 10px;
 }
 
 /*
