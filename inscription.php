@@ -35,6 +35,7 @@ session_start();
 							$mdp = sha1($_POST['mdp']);
 							$insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenoms, mail, mdpass, date_inscription) VALUES(?, ?, ?, ?, NOW())");
 							$insertmbr->execute(array($nom, $prenoms, $email, $mdp));
+							header("location: profile.php?id=".$_SESSION['id']);
 						}
 						else {
 							$erreur = 'Les deux mot de passe sont differents';
@@ -66,6 +67,13 @@ session_start();
 						<form id="formulaire" method="POST" action="">
 							<div class="container-form inscription-form">
 								<h1>Inscrivez vous ici</h1>
+								<p>Je veux me <a href="connexion.php">connecter</a> j'ai deja un compte <br>
+								<?php
+									if (isset($erreur)) {
+										echo '<font color="#e32b17">' . $erreur . '</font>'; 
+									}
+								?>
+								</p>
 								<input class="champdesaisir" type="text" name="nom" placeholder="Nom" value="<?php if(isset($nom)) { echo $nom; } ?>"> 
 								<br>
 								<input class="champdesaisir" type="text" name="prenoms" placeholder="Prenoms" value="<?php if(isset($prenoms)) { echo $prenoms; } ?>"> 
@@ -79,13 +87,6 @@ session_start();
 								<input class="champdesaisir" type="password" name="mdp2" placeholder="Confirmer le mot de pass"> 
 								<br>
 								<input class="form-bouton" name="inscription" type="submit" value="Se connecter" />
-								<p>Je veux me <a href="connexion.php">connecter</a> j'ai deja un compte <br>
-								<?php
-									if (isset($erreur)) {
-										echo '<font color="#e32b17">' . $erreur . '</font>'; 
-									}
-								?>
-								</p>
 							</div>
 						</form>
 					</div>
