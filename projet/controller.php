@@ -1,0 +1,4 @@
+<?php
+
+require('model.php');
+

@@ -7,6 +7,8 @@
 */
 .page-body.container-fluid {
   margin: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .card-container {
@@ -30,7 +32,7 @@
 }
 
 .card-right {
-  background-image: url("../img/back.jpg");
+  background-image: url("../../img/back.jpg");
   background-size: cover;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
   -ms-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
@@ -70,11 +72,11 @@
 }
 
 .champdesaisir {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: #3E2E2E;
   border: none;
-  color: #c5ecfd;
-  padding: 15px;
+
+  padding: 10px;
   width: 100%;
   color: #E4E4E4;
 }

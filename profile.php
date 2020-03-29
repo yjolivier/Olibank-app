@@ -1,13 +1,8 @@
 <?php
 session_start();
-
-//Connexion a la base de donnee
-try {
-	$bdd = new PDO('mysql:host=localhost;dbname=olibank;charset=utf8', 'root', '');
-}
-catch (Exception $e) {
-	die('Erreur : ' . $e->getMessage());
-}
+	require "projet/model.php";
+	//connexin a la base de donnée
+	$bdd = dbConnect();
 
 if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
