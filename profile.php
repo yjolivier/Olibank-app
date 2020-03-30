@@ -17,7 +17,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		<div class="container-fluid">
 			<header class="row sticky-top">
 					<div class="header-logo col-lg-4 col-sm-6 col-6">
-						<img src="img/Nsia-logo.png">
+						<h2>Espace Client</h2>
 					</div>
 					<div class="header-menu col-lg-8 col-sm-6 col-6">
 						<nav class="navbar navbar-expand-md navbar-white bg-transparent">
@@ -32,7 +32,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 										<a class="nav-link" href="#">ACCUEIL</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#">A PROPOS</a>
+										<a class="nav-link" href="#">compte</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="#">CONTACTE</a>
@@ -45,49 +45,51 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 						</nav>
 					</div>
 			</header>
+			<div class="slider row"></div>
 			<section class="page-content row">
 			<?php if(isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id']):?>
-				<div class="title col-12">
-					<h1>BIENVENU <?php echo $userinfo['nom'] . ' ' . $userinfo['prenoms']?></h1>
-				</div>
-				<div class="solde-container col-12">
-					<center>
-						<div class="solde-content">
-							<nav><h1>solde : </h1></nav>
+				<div class="content-card-left col-lg-6">
+					<div class="row">
+						<div class="card-img col-12">
+							<img src="projet/img/devise.jpg" alt="..." >
 						</div>
-					</center>
-				</div>
-				<div class="historique-card col-12">
-					<div class="title col-12">
-						<h1>HISTORIQUE DEBIT CREDIT</h1>
+						<div class="title col-12">
+							<h2><?php echo $userinfo['nom'] . ' ' . $userinfo['prenoms']?></h2>
+							<div class="solde-content">
+								<h2>solde : 000000000000000</h2>
+							</div>
+						</div>
 					</div>
-					<div class="col-12">
-						<table id="debit-credit" width="80%" border="1" align="center">
-							<thead>
-								<tr align="center">
-									<th colspan="3">debit</th>
-									<th colspan="3">credit</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>date</th>
-									<th>libelles</th>
-									<th>montant</th>
-									<th>date</th>
-									<th>libelles</th>
-									<th>montant</th>
-								</tr>
-								<tr>
-									<td>col</td>
-									<td>col</td>
-									<td>col</td>
-									<td>col</td>
-									<td>col</td>
-									<td>col</td>
-								</tr>
-							</tbody>
-						</table>
+				</div>
+				<div class="content-card-right col-lg-6">
+					<div class="row">
+						<div class="historique-title col-12">
+							<h1>HISTORIQUE</h1>
+						</div>
+						<div class="historique-card col-12">
+								<table id="debit-credit" width="100%" border="1">
+									<thead>
+										<tr align="center">
+											<th colspan="2">debit</th>
+											<th colspan="2">credit</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>date</th>
+											<th>montant</th>
+											<th>date</th>
+											<th>montant</th>
+										</tr>
+										<tr>
+											<td>col</td>
+											<td>col</td>
+											<td>col</td>
+											<td>col</td>
+										</tr>
+									</tbody>
+								</table>
+						</div>
 					</div>
 				</div>
 				<?php endif; ?>

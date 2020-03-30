@@ -103,11 +103,9 @@ header{
   padding: 10px;
 }
 .header-logo{
-	padding: 15px 60px 0px;
-	img{
-		max-width: 150px;
-		height: auto;
-	}
+	color: #fff;
+	font-family: 'montserrat';
+	font-size: 1.5em;
 }
 .header-menu{
 	margin-top: 15px;
@@ -138,6 +136,11 @@ header .btn-menu{
 header .btn-menu:hover{
 	color:$fird-color;
 }
+/*
+================================================================================================
+Page content
+================================================================================================
+*/
 .title.col-12{
 	text-align: center;
 	color: $premary-color;
@@ -147,11 +150,6 @@ header .btn-menu:hover{
 		font-weight: bold;
 	}
 }
-/*
-================================================================================================
- Page content
-================================================================================================
-*/
 .solde-container{
 	.solde-content{
 		margin: 15px;

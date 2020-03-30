@@ -10,6 +10,11 @@
   height: 100vh;
   overflow: hidden;
 }
+.container-fluid{
+padding-left: 0px;
+padding-right: 0px;
+overflow-x: hidden;
+}
 
 .card-container {
   width: 100%;
@@ -32,7 +37,7 @@
 }
 
 .card-right {
-  background-image: url("../../img/back.jpg");
+  background-image: url("../../img/slider.jpg");
   background-size: cover;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
   -ms-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
@@ -111,32 +116,33 @@
 ================================================================================================
 */
 header {
-  height: auto;
-  background-color: #d44829;
-  padding: 10px;
+  background-color: #4B4242;
 }
 
-.header-logo {
-  padding: 15px 60px 0px;
-}
-.header-logo img {
-  max-width: 150px;
-  height: auto;
+.header-logo h2{
+  color: #fff;
+	font-family: 'montserrat';
+  font-size: 2.6em;
+  margin: 20px 0px 0px 30px;
 }
 
+.navbar.navbar-expand-md.navbar-white.bg-transparent {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
 .header-menu {
-  margin-top: 15px;
   text-transform: uppercase;
   font-size: 1.4em;
+  height: 90px;
 }
 .header-menu a {
   text-decoration: none;
   color: #E4E4E4;
-  font-weight: bold;
+  font-weight: 500;
   transition: color 0.3s;
 }
 .header-menu a:hover {
-  color: #4B4242;
+  border-bottom : solid 2px rgba(212, 72, 41);
 }
 .header-menu .nav-item {
   padding-right: 10px;
@@ -156,39 +162,50 @@ header .btn-menu {
 header .btn-menu:hover {
   color: #4B4242;
 }
-
-.title.col-12 {
-  text-align: center;
-  color: #d44829;
-}
-.title.col-12 h1 {
-  margin-top: 25px;
-  color: #d44829;
-  font-weight: bold;
+/*
+================================================================================================
+Slider
+================================================================================================
+*/
+.slider{
+  height: 100px;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  background-image: url('../../img/slide.jpg');
+  background-size: cover;
 }
 
 /*
 ================================================================================================
- Page content
+Page content
 ================================================================================================
 */
-.solde-container .solde-content {
-  margin: 15px;
-  max-width: 550px;
-  padding: 40px;
-  background-color: #4B4242;
-  color: #d44829;
-  text-align: left;
-  border-radius: 25px;
-  text-transform: uppercase;
+.page-content{
+  margin-top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
-
+.content-card-left{
+  height: auto;
+  overflow: hidden;
+}
+.content-card-left .card-img{
+  height: 350px;
+  overflow: hidden;
+}
+.content-card-left .card-img img{
+  max-width: 100%;
+  height: auto;
+}
+.content-card-left .title {
+  margin-top: 12px;
+  text-transform: uppercase;
+  color: #d44829;
+}
 table {
   margin-top: 20px;
-  margin-bottom: 25px;
-  width: 80%;
   border: solid 1px #E4E4E4;
-  align: center;
 }
 table thead th {
   padding: 10px;
