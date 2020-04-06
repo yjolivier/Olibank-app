@@ -1,0 +1,228 @@
+/*
+	* card form generator
+	@link: https://bennettfeely.com/clippy/
+**/
+/**
+	*SCSS Variable
+*/
+$premary-color: #d44829;
+$secondary-color: #E4E4E4;
+$fird-color: #4B4242;
+
+.page-body.container-fluid{
+	margin: 0;
+}
+.card-container{
+	width: 100%;
+}
+.card-left, .card-right{
+	max-height: 800px;
+	height: 700px;
+}
+.card-container-small{
+	background: rgba(212, 72, 41,0.8);
+}
+.card-left{
+	background: transparent;
+	-webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+	-ms-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+	clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+}
+.card-right{
+	background-image: url('../img/back.jpg');
+  background-size: cover;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+	-ms-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+#formulaire{
+	width: 90%;
+	padding: 0 20px;
+}
+
+.container-form{
+	max-width: 550px;
+  margin: 100px auto;
+	padding: 20px;
+	padding-left: 0px;
+	font-size: 20px;
+}
+.container-form h1{
+	font-size: 4.5rem;
+  color: #fff;
+  font-family: montserrat;
+}
+.container-form p{
+	padding: 0px 0px;
+}
+.container-form p a{
+	text-decoration: none;
+	color: #fff;
+}
+.container-form p a:hover{
+	color: #d4d1d1;
+}
+.champdesaisir{
+	margin-top: 20px;
+	background-color: #3E2E2E;
+	border: none;
+	color: #c5ecfd;
+	padding: 15px;
+	width: 100%;
+	color: $secondary-color;
+}
+.form-bouton{
+	background: $secondary-color;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+	margin-top: 20px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #3E2E2E;
+	font-size: 20px;
+	transition: background 0.5s;
+}
+.form-bouton:hover{
+	background: rgb(180, 179, 179);
+}
+.container-form.inscription-form{
+	margin: 0px auto;
+}
+/*
+================================================================================================
+ Header style
+================================================================================================
+*/
+header{
+	height: auto;
+  background-color: $premary-color;
+  padding: 10px;
+}
+.header-logo{
+	color: #fff;
+	font-family: 'montserrat';
+	font-size: 1.5em;
+}
+.header-menu{
+	margin-top: 15px;
+	text-transform: uppercase;
+	font-size: 1.4em;
+	a{
+		text-decoration: none;
+		color: $secondary-color;
+		font-weight: bold;
+		transition: color 0.3s;
+		&:hover{
+			color:$fird-color;
+		}
+	}
+	.nav-item{
+		padding-right: 10px;
+	}
+}
+#collapse_target {
+  justify-content: flex-end;
+} 
+header .btn-menu{
+	color: $secondary-color;
+	font-size: 30px;
+	border: 2px solid;
+	padding: 5px;
+}
+header .btn-menu:hover{
+	color:$fird-color;
+}
+/*
+================================================================================================
+Page content
+================================================================================================
+*/
+.title.col-12{
+	text-align: center;
+	color: $premary-color;
+	h1{
+		margin-top: 25px;
+		color: $premary-color;
+		font-weight: bold;
+	}
+}
+.solde-container{
+	.solde-content{
+		margin: 15px;
+		max-width: 550px;
+		padding: 40px;
+		background-color: $fird-color;
+		color: $premary-color;
+		text-align: left;
+		border-radius: 25px;
+		text-transform: uppercase;
+	}
+}
+table{
+	margin-top: 20px;
+	margin-bottom: 25px;
+	width: 80%;
+	border: solid 1px $secondary-color;
+	align: center;
+	thead{
+		th{
+			padding: 10px;
+			font-size: 2.3em;
+			text-transform: uppercase;
+			background-color: $fird-color;
+			color: $secondary-color;
+		}
+	}
+	tbody{
+		th{
+			padding: 10px;
+			font-size: 1.3em;
+			text-transform: uppercase;
+			background-color: $secondary-color;
+			color: $fird-color;
+			text-align: center;
+		}
+		td{
+			padding: 10px;
+			font-size: 1.3em;
+			background-color: $secondary-color;
+			color: $fird-color;
+		}
+	}
+}
+/*
+================================================================================================
+	Footer style
+================================================================================================
+*/
+footer.row{
+	height: 50px;
+	background-color: $premary-color;
+	color: $secondary-color;
+	font-size: 1.8em;
+	margin-top: 35px;
+	text-align: center;
+	p{
+		padding-top: 10px;
+	}
+}
+
+/*
+================================================================================================
+ Media queries
+================================================================================================
+*/
+@media screen and (max-width: 1024px) {
+	.container-form h1{
+	  font-size: 3.5rem;
+	}
+}
+@media screen and (max-width: 720px){
+	.card-right{
+		display: none;
+	}
+}

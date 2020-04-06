@@ -23,14 +23,20 @@ session_start();
 				}
 				else {
 					$erreur = 'Adresse mail ou mot de passe incorrect';
+					$_SESSION['erreur'] = $erreur;
+					header("location: index.php");
 				}
 			}
 			else {
 				$erreur = 'L\'adresse mail est invalide';
+				header("location: index.php");
+				$_SESSION['erreur'] = $erreur;
 			}
 		}
 		else{
 			$erreur = 'Tout les champs doivent être remplient';
+			$_SESSION['erreur'] = $erreur;
+			header("location: index.php");
 		}
 	}
 ?>

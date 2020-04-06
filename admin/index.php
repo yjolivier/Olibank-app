@@ -9,12 +9,11 @@ require 'header.php'; ?>
 					<div class="card-left col-lg-6 col-md-6 col-sm-12 ">
 						<form id="formulaire" method="POST" action="connexion.php">
 							<div class="container-form">
-								<h1>Connectez vous ici</h1>
-								<input class="champdesaisir" type="email" name="mailconnect" placeholder="Adresse mail"> <br>
-								<input class="champdesaisir" type="password" name="mdpconnect" placeholder="Password"> <br>
-								<input class="form-bouton" name="connexion" type="submit" value="Se connecter" />
+								<h1>Connexion admin</h1>
+								<input class="champdesaisir" type="email" name="mailadmin" placeholder="Adresse mail"> <br>
+								<input class="champdesaisir" type="password" name="mdpadmin" placeholder="Password"> <br>
+								<input class="form-bouton" name="connexionadmin" type="submit" value="Se connecter" />
 								<p>
-									Je veux creer <a href="inscription.php">un compte</a><br>
 									<?php
 										if (isset($_SESSION['erreur'])) {
 											echo '<br><font color="red">' . $_SESSION['erreur'] . '</font>';
@@ -30,5 +29,5 @@ require 'header.php'; ?>
 			</div>
 		</div>
 	</body>
-	<?php require 'footer.php'; ?>
+	<?php require '../footer.php'; ?>
 </html>

@@ -51,12 +51,12 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 				<div class="content-card-left col-lg-6">
 					<div class="row">
 						<div class="card-img col-12">
-							<img src="projet/img/devise.jpg" alt="..." >
+							<img src="projet/img/slide.jpg" alt="..." >
 						</div>
 						<div class="title col-12">
 							<h2><?php echo $userinfo['nom'] . ' ' . $userinfo['prenoms']?></h2>
 							<div class="solde-content">
-								<h2>solde : 000000000000000</h2>
+								<h2>solde : *******************</h2>
 							</div>
 						</div>
 					</div>

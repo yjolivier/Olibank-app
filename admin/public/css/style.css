@@ -1,0 +1,265 @@
+/*
+	* card form generator
+	@link: https://bennettfeely.com/clippy/
+**/
+/**
+	*SCSS Variable
+*/
+.page-body.container-fluid {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.container-fluid{
+padding-left: 0px;
+padding-right: 0px;
+overflow-x: hidden;
+}
+
+.card-container {
+  width: 100%;
+}
+
+.card-left, .card-right {
+  max-height: 800px;
+  height: 700px;
+}
+
+.card-container-small {
+  background: rgba(212, 72, 41, 0.8);
+}
+
+.card-left {
+  background: transparent;
+  -webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+  -ms-clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+}
+
+.card-right {
+  background-image: url("../../img/slider.jpg");
+  background-size: cover;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  -ms-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
+#formulaire {
+  width: 90%;
+  padding: 0 20px;
+}
+
+.container-form {
+  max-width: 550px;
+  margin: 100px auto;
+  padding: 20px;
+  padding-left: 0px;
+  font-size: 20px;
+}
+
+.container-form h1 {
+  font-size: 4.5rem;
+  color: #fff;
+  font-family: montserrat;
+}
+
+.container-form p {
+  padding: 0px 0px;
+}
+
+.container-form p a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.container-form p a:hover {
+  color: #d4d1d1;
+}
+
+.champdesaisir {
+  margin-top: 10px;
+  background-color: #3E2E2E;
+  border: none;
+
+  padding: 10px;
+  width: 100%;
+  color: #E4E4E4;
+}
+
+.form-bouton {
+  background: #E4E4E4;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #3E2E2E;
+  font-size: 20px;
+  transition: background 0.5s;
+}
+
+.form-bouton:hover {
+  background: #b4b3b3;
+}
+
+.container-form.inscription-form {
+  margin: 0px auto;
+}
+
+/*
+================================================================================================
+ Header style
+================================================================================================
+*/
+header {
+  background-color: #4B4242;
+}
+
+.header-logo h2{
+  color: #fff;
+	font-family: 'montserrat';
+  font-size: 2.6em;
+  margin: 20px 0px 0px 30px;
+}
+
+.navbar.navbar-expand-md.navbar-white.bg-transparent {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.header-menu {
+  text-transform: uppercase;
+  font-size: 1.4em;
+  height: 90px;
+}
+.header-menu a {
+  text-decoration: none;
+  color: #E4E4E4;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.header-menu a:hover {
+  border-bottom : solid 2px rgba(212, 72, 41);
+}
+.header-menu .nav-item {
+  padding-right: 10px;
+}
+
+#collapse_target {
+  justify-content: flex-end;
+}
+
+header .btn-menu {
+  color: #E4E4E4;
+  font-size: 30px;
+  border: 2px solid;
+  padding: 5px;
+}
+
+header .btn-menu:hover {
+  color: #4B4242;
+}
+/*
+================================================================================================
+Slider
+================================================================================================
+*/
+.slider{
+  height: 100px;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  background-image: url('../../img/slide.jpg');
+  background-size: cover;
+}
+
+/*
+================================================================================================
+Page content
+================================================================================================
+*/
+.page-content{
+  margin-top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.content-card-left{
+  height: auto;
+  overflow: hidden;
+}
+.content-card-left .card-img{
+  height: 350px;
+  overflow: hidden;
+}
+.content-card-left .card-img img{
+  max-width: 100%;
+  height: auto;
+}
+.content-card-left .title {
+  margin-top: 12px;
+  text-transform: uppercase;
+  color: #d44829;
+}
+table {
+  margin-top: 20px;
+  border: solid 1px #E4E4E4;
+}
+table thead th {
+  padding: 10px;
+  font-size: 2.3em;
+  text-transform: uppercase;
+  background-color: #4B4242;
+  color: #E4E4E4;
+}
+table tbody th {
+  padding: 10px;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  background-color: #E4E4E4;
+  color: #4B4242;
+  text-align: center;
+}
+table tbody td {
+  padding: 10px;
+  font-size: 1.3em;
+  background-color: #E4E4E4;
+  color: #4B4242;
+}
+
+/*
+================================================================================================
+	Footer style
+================================================================================================
+*/
+footer.row {
+  height: 50px;
+  background-color: #d44829;
+  color: #E4E4E4;
+  font-size: 1.8em;
+  margin-top: 35px;
+  text-align: center;
+}
+footer.row p {
+  padding-top: 10px;
+}
+
+/*
+================================================================================================
+ Media queries
+================================================================================================
+*/
+@media screen and (max-width: 1024px) {
+  .container-form h1 {
+    font-size: 3.5rem;
+  }
+}
+@media screen and (max-width: 720px) {
+  .card-right {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
