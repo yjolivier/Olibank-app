@@ -2,6 +2,11 @@
 session_start();
 	require "projet/model.php";
 	$title = '';
+	$debit = [];
+	$credit = [];
+	$DebitMont = [];
+	$CreditMont = [];
+	$solde = 0;
 	//connexin a la base de donnée
 	$bdd = dbConnect();
 
@@ -12,6 +17,30 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 	$requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
 	$requser->execute(array($getid));
 	$userinfo = $requser->fetch();
+
+	//recuperer tout les debits
+	$reqdeb = $bdd->query("SELECT montant, DATE_FORMAT(date_debit, '%d/%m/%Y %Hh%imin%ss') AS date_debit FROM compte_debit_client WHERE id_membre = $getid ORDER BY date_debit DESC");
+	while ($reponse = $reqdeb->fetch()) {
+		$debit[] = array(
+			"montant" => (int)$reponse['montant'],
+			"date" => $reponse['date_debit']
+		);
+	}
+	foreach ($debit as $k => $value) {
+		$DebitMont[] = $value['montant']; 
+	}
+	$DebMont = array_sum($DebitMont);
+	$reqcred = $bdd->query("SELECT montant, DATE_FORMAT(date_credit, '%d/%m/%Y %Hh%imin%ss') AS date_credit FROM compte_credit_client WHERE id_membre = $getid ORDER BY date_credit DESC");
+	while ($reponse = $reqcred->fetch()) {
+		$credit[] = array(
+			"montant" => (int)$reponse['montant'],
+			"date" => $reponse['date_credit']
+		);
+	}
+	foreach ($credit as $k => $value) {
+		$CreditMont[] = $value['montant']; 
+	}
+	$CredMont = (int)array_sum($CreditMont);
 ?>
 <?php require 'header.php'; ?>
 	<body>
@@ -57,7 +86,18 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 						<div class="title col-12">
 							<h2><?php echo $userinfo['nom'] . ' ' . $userinfo['prenoms']?></h2>
 							<div class="solde-content">
-								<h2>solde : *******************</h2>
+								<h2>
+								<?php
+									if ($CredMont < $DebMont) {
+										$solde = $DebMont - $CredMont;
+										echo 'Solde crediteure : '.$solde;
+									}
+									else {
+										$solde = $CredMont - $DebMont;
+										echo 'Solde Debiteure : '.$solde.' F';
+									}
+								?>
+								</h2>
 							</div>
 						</div>
 					</div>
@@ -68,10 +108,29 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 							<h1>HISTORIQUE</h1>
 						</div>
 						<div class="historique-card col-12">
-								<table id="debit-credit" width="100%" border="1">
+							<div class="row">
+								<table id="debit-credit" class="col-6" border="1">
 									<thead>
 										<tr align="center">
 											<th colspan="2">debit</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>date</th>
+											<th>montant</th>
+										</tr>
+										<?php foreach ($debit as $k => $value) {?>
+										<tr>
+											<td><?= $value['date'] ?></td>
+											<td><?= $value['montant']?></td>
+										</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+								<table id="debit-credit" class="col-6" border="1">
+									<thead>
+										<tr align="center">
 											<th colspan="2">credit</th>
 										</tr>
 									</thead>
@@ -79,17 +138,16 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 										<tr>
 											<th>date</th>
 											<th>montant</th>
-											<th>date</th>
-											<th>montant</th>
 										</tr>
+										<?php foreach ($credit as $k => $value) {?>
 										<tr>
-											<td>col</td>
-											<td>col</td>
-											<td>col</td>
-											<td>col</td>
+											<td><?= $value['date'] ?></td>
+											<td><?= $value['montant']?></td>
 										</tr>
+										<?php } ?>
 									</tbody>
 								</table>
+							</div>
 						</div>
 					</div>
 				</div>

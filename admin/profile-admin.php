@@ -3,14 +3,23 @@ session_start();
 	require "../projet/model.php";
 	//connexin a la base de donnée
 	$bdd = dbConnect();
+	$infodebit = array();
+	
+	if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
+		
+		//Convertir l'id en nombre 
+		$getid = intval($_GET['id']);
+		$reqadmin = $bdd->prepare("SELECT * FROM administrateur WHERE id = ?");
+		$reqadmin->execute(array($getid));
+		$admininfo = $reqadmin->fetch();
 
-if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
+		//recuperation de tout les montants debit d'un client 
+		$reqdebit = $bdd->query("SELECT montant FROM compte_debit_client WHERE id_membre = $getid");
+		while($montant_debit = $reqdebit->fetch()){
+			$infodebit = $montant_debit;
+		}
 
-	//Convertir l'id en nombre
-	$getid = intval($_GET['id']);
-	$reqadmin = $bdd->prepare("SELECT * FROM administrateur WHERE id = ?");
-	$reqadmin->execute(array($getid));
-	$admininfo = $reqadmin->fetch();
+
 ?>
 <?php require 'header.php'; ?>
 	<body>
@@ -58,6 +67,7 @@ if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 										<th scope="col">Nom et Prenoms</th>
 										<th scope="col">email</th>
 										<th scope="col">Date d'Inscription</th>
+										<th scope="col">Solde</th>
 										<th scope="col">Débiter</th>
 										<th scope="col">créditer</th>
 										<th scope="col">Suprimer</th>
@@ -73,6 +83,7 @@ if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 										<td><?= $userinfo['nom']." ".$userinfo['prenoms'] ?></td>
 										<td><?= $userinfo['mail'] ?></td>
 										<td><?= $userinfo['date_inscription'] ?></td>
+										<td></td>
 										<td align="center"><a href="debit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="credit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="delete.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
