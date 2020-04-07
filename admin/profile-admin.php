@@ -45,7 +45,7 @@ if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 			<div class="slider row"></div>
 			<section class="page-content row">
 			<?php if(isset($_SESSION['adminid']) AND $admininfo['id'] == $_SESSION['adminid']):?>
-				<div class="content-card-left col-lg-8">
+				<div class="content-card-left col-lg-10">
 					<div class="row">
 						<div class="historique-title col-12">
 							<h1>Liste des Clients</h1>
@@ -58,7 +58,8 @@ if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 										<th scope="col">Nom et Prenoms</th>
 										<th scope="col">email</th>
 										<th scope="col">Date d'Inscription</th>
-										<th scope="col">Edit</th>
+										<th scope="col">Débiter</th>
+										<th scope="col">créditer</th>
 										<th scope="col">Suprimer</th>
 									</tr>
 								</thead>
@@ -72,6 +73,7 @@ if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 										<td><?= $userinfo['nom']." ".$userinfo['prenoms'] ?></td>
 										<td><?= $userinfo['mail'] ?></td>
 										<td><?= $userinfo['date_inscription'] ?></td>
+										<td align="center"><a href="debit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="#"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="delete.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
 									</tr>
