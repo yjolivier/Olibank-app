@@ -74,7 +74,7 @@ if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 										<td><?= $userinfo['mail'] ?></td>
 										<td><?= $userinfo['date_inscription'] ?></td>
 										<td align="center"><a href="debit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
-										<td align="center"><a href="#"><i class="fas fa-user-edit"></i></a></td>
+										<td align="center"><a href="credit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="delete.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
 									</tr>
 									<?php endwhile ?>
