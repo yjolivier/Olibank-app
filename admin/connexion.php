@@ -16,7 +16,7 @@ session_start();
 				if ($userexist == 1) {
 					$userinfo = $requser->fetch();
 					$_SESSION['adminid'] = $userinfo['id'];
-						header("location: profile-admin.php?id=".$_SESSION['id']);
+						header("location: profile-admin.php?id=".$_SESSION['adminid']);
 				}
 				else {
 					$erreur = 'Adresse mail ou mot de passe incorrect';

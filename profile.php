@@ -1,6 +1,7 @@
 <?php
 session_start();
 	require "projet/model.php";
+	$title = '';
 	//connexin a la base de donnée
 	$bdd = dbConnect();
 

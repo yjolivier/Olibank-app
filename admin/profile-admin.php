@@ -4,7 +4,7 @@ session_start();
 	//connexin a la base de donnée
 	$bdd = dbConnect();
 
-if (isset($_GET['id']) AND $_GET['id'] > 0) {
+if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 
 	//Convertir l'id en nombre
 	$getid = intval($_GET['id']);
@@ -51,29 +51,33 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 							<h1>Liste des Clients</h1>
 						</div>
 						<div class="historique-card col-12">
-								<table class="table col-12">
-							<thead class="black white-text">
-								<tr>
-									<th scope="col">id</th>
-									<th scope="col">Nom et Prenoms</th>
-									<th scope="col">Date d'Inscription</th>
-									<th scope="col">Edit</th>
-								</tr>
-							</thead>
-							<tbody>
-							<?php
-								$requser = $bdd->query("SELECT * FROM membres");
-								while ($userinfo = $requser->fetch()):
-							?>
-								<tr>
-									<th scope="row"><?= $userinfo['id'] ?></th>
-									<td><?= $userinfo['nom']." ".$userinfo['prenoms'] ?></td>
-									<td><?= $userinfo['date_inscription'] ?></td>
-									<td>@mdo</td>
-								</tr>
-								<?php endwhile ?>
-							</tbody>
-						</table>
+							<table class="table-admin col-12">
+								<thead class="">
+									<tr>
+										<th scope="col">id</th>
+										<th scope="col">Nom et Prenoms</th>
+										<th scope="col">email</th>
+										<th scope="col">Date d'Inscription</th>
+										<th scope="col">Edit</th>
+										<th scope="col">Suprimer</th>
+									</tr>
+								</thead>
+								<tbody>
+								<?php
+									$requser = $bdd->query("SELECT id, nom, prenoms, mail,  DATE_FORMAT(date_inscription, '%d/%m/%Y') AS date_inscription FROM membres");
+									while ($userinfo = $requser->fetch()):
+								?>
+									<tr>
+										<td scope="row"><?= $userinfo['id'] ?></td>
+										<td><?= $userinfo['nom']." ".$userinfo['prenoms'] ?></td>
+										<td><?= $userinfo['mail'] ?></td>
+										<td><?= $userinfo['date_inscription'] ?></td>
+										<td align="center"><a href="#"><i class="fas fa-user-edit"></i></a></td>
+										<td align="center"><a href="delete.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
+									</tr>
+									<?php endwhile ?>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>

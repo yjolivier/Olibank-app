@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "projet/model.php";
+require "../projet/model.php";
 require 'header.php';
   $oui = "oui";
 	$title = '';
@@ -15,7 +15,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
   $userinfo = $requser->fetch();
 }
 else {
-  header("location: 404.php");
+  header("location: ../404.php");
 }
 
 if ($userinfo){ ?>
@@ -30,7 +30,7 @@ if ($userinfo){ ?>
         </h2>
         <div class="button-container">
           <div class="delete-button oui">
-            <a href="teste.php?id=<?= $getid ?>&value=<?= $oui ?>">Oui</a>
+            <a href="delete.php?id=<?= $getid?>&value=<?= $oui ?>">Oui</a>
           </div>
           <div class="delete-button non">
             <a href="http://localhost/olibank/admin/profile-admin.php?id=<?= $_SESSION['adminid']?>">non</a>
@@ -42,8 +42,8 @@ if ($userinfo){ ?>
 <?php
 }
 if (isset($_GET['value']) AND !empty($_GET['value']) AND $_GET['value'] = $oui) {
-    $req = $bdd->prepare("DELETE FROM membre WHERE id = ? ");
-    $req->execute(array($getid));
-    header("location: 404.php");
-  }
+  $req = $bdd->prepare("DELETE FROM membres WHERE id = ? ");
+  $req->execute(array($getid));
+  header("location: profile-admin.php?id=".$_SESSION['adminid']);
+}
 ?>
