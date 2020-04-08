@@ -1,8 +1,6 @@
 <?php
 session_start();
-	require "projet/model.php";
-	//connexin a la base de donnée
-	$bdd = dbConnect();
+require "projet/model.php";
 
 	if (isset($_POST['connexion'])) {
 		$mailconnect = htmlspecialchars($_POST['mailconnect']);
@@ -10,8 +8,7 @@ session_start();
 
 		if (!empty($_POST['mailconnect']) AND !empty($_POST['mdpconnect'])) {
 			if (filter_var($mailconnect, FILTER_VALIDATE_EMAIL)) {
-				$requser = $bdd->prepare("SELECT * FROM membres WHERE mail = ? AND mdpass = ?");
-				$requser->execute(array($mailconnect, $mdpconnect));
+				$requser = SelectUser($mailconnect);
 				$userexist = $requser->rowCount();
 				if ($userexist == 1) {
 					$userinfo = $requser->fetch();
