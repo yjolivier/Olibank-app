@@ -119,7 +119,3 @@
 		</div>
 	</body>
 	<?php require 'footer.php'; ?>
-</html>
-<?php
-}
-?>
