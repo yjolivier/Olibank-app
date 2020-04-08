@@ -3,7 +3,9 @@ session_start();
 	require "../projet/model.php";
 	//connexin a la base de donnée
 	$bdd = dbConnect();
-	$infodebit = array();
+	$solde = 0;
+	$DebMont = 0;
+	$CredMont = 0;
 	
 	if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
 		
@@ -12,14 +14,6 @@ session_start();
 		$reqadmin = $bdd->prepare("SELECT * FROM administrateur WHERE id = ?");
 		$reqadmin->execute(array($getid));
 		$admininfo = $reqadmin->fetch();
-
-		//recuperation de tout les montants debit d'un client 
-		$reqdebit = $bdd->query("SELECT montant FROM compte_debit_client WHERE id_membre = $getid");
-		while($montant_debit = $reqdebit->fetch()){
-			$infodebit = $montant_debit;
-		}
-
-
 ?>
 <?php require 'header.php'; ?>
 	<body>
@@ -77,18 +71,57 @@ session_start();
 								<?php
 									$requser = $bdd->query("SELECT id, nom, prenoms, mail,  DATE_FORMAT(date_inscription, '%d/%m/%Y') AS date_inscription FROM membres");
 									while ($userinfo = $requser->fetch()):
-								?>
+										$userid = (int)$userinfo['id'];
+
+										//recuperer tout les debits
+										$reqdeb = $bdd->query("SELECT montant FROM compte_debit_client WHERE id_membre = $userid ");
+										while ($reponse = $reqdeb->fetch()) {
+											$debit[] = array(
+												"montant" => (int)$reponse['montant']
+											);
+										}
+										foreach ($debit as $k => $value) {
+											$DebitMont[] = $value['montant']; 
+										}
+										$DebMont = array_sum($DebitMont);
+										$debit = [];
+										$DebitMont = [];
+
+										//recuperer tout les credits
+										$reqcred = $bdd->query("SELECT montant FROM compte_credit_client WHERE id_membre = $userid");
+										while ($reponse = $reqcred->fetch()) {
+											$credit[] = array(
+												"montant" => (int)$reponse['montant']
+											);
+										}
+										foreach ($credit as $k => $value) {
+											$CreditMont[] = $value['montant']; 
+										}
+										$CredMont = array_sum($CreditMont);
+										$credit = [];
+										$CreditMont = [];
+										$solde = $CredMont - $DebMont;
+										?>
 									<tr>
-										<td scope="row"><?= $userinfo['id'] ?></td>
+										<td scope="row"><?= $userid ?> </td>
 										<td><?= $userinfo['nom']." ".$userinfo['prenoms'] ?></td>
 										<td><?= $userinfo['mail'] ?></td>
 										<td><?= $userinfo['date_inscription'] ?></td>
-										<td></td>
+										<td>
+
+										<?php 
+												echo "$solde F";
+												$CredMont = 0;
+												$DebMont = 0;
+												?>
+										</td>
 										<td align="center"><a href="debit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="credit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="delete.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
 									</tr>
-									<?php endwhile ?>
+										<?php
+											endwhile; 
+											?>
 								</tbody>
 							</table>
 						</div>

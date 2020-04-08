@@ -2,10 +2,6 @@
 session_start();
 	require "projet/model.php";
 	$title = '';
-	$debit = [];
-	$credit = [];
-	$DebitMont = [];
-	$CreditMont = [];
 	$solde = 0;
 	//connexin a la base de donnée
 	$bdd = dbConnect();
@@ -30,6 +26,8 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		$DebitMont[] = $value['montant']; 
 	}
 	$DebMont = array_sum($DebitMont);
+
+	//recuperer tout les credits
 	$reqcred = $bdd->query("SELECT montant, DATE_FORMAT(date_credit, '%d/%m/%Y %Hh%imin%ss') AS date_credit FROM compte_credit_client WHERE id_membre = $getid ORDER BY date_credit DESC");
 	while ($reponse = $reqcred->fetch()) {
 		$credit[] = array(
