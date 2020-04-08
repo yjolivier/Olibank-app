@@ -10,8 +10,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
 	//Convertir l'id en nombre
 	$getid = intval($_GET['id']);
-	$requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
-	$requser->execute(array($getid));
+	$requser = $bdd->query("SELECT * FROM membres WHERE id = $getid");
 	$userinfo = $requser->fetch();
 
 	//recuperer tout les debits
@@ -57,13 +56,13 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 							<div class="collapse  navbar-collapse" id="collapse_target">
 								<ul class="navbar-nav">
 									<li class="nav-item">
-										<a class="nav-link" href="#">ACCUEIL</a>
+										<a class="nav-link" href="profile.php?id=<?= $_SESSION['id']?>">ACCUEIL</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#">compte</a>
+										<a class="nav-link" href="compte.php?id=<?= $_SESSION['id']?>">compte</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#">CONTACTE</a>
+										<a class="nav-link" href="contacte.php">CONTACTE</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="deconnexion.php">Deconnexion</a>
@@ -88,10 +87,12 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 								<?php
 									if ($CredMont < $DebMont) {
 										$solde = $DebMont - $CredMont;
+										$_SESSION['mbrsolde'] = $solde;
 										echo 'Solde crediteure : '.$solde;
 									}
 									else {
 										$solde = $CredMont - $DebMont;
+										$_SESSION['mbrsolde'] = $solde;
 										echo 'Solde Debiteure : '.$solde.' F';
 									}
 								?>
