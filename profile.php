@@ -12,17 +12,21 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
 	//recuperer tout les debits
 	$debit = FetchDebit($getid);
-	foreach ($debit as $k => $value) {
-		$DebitMont[] = $value['montant']; 
+	if (!empty($debit)) {
+		foreach ($debit as $k => $value) {
+			$DebitMont[] = $value['montant']; 
+		}
+		$DebMont = array_sum($DebitMont);
 	}
-	$DebMont = array_sum($DebitMont);
 
 	//recuperer tout les credits
 	$credit = FetchCredit($getid);
-	foreach ($credit as $k => $value) {
-		$CreditMont[] = $value['montant']; 
+	if (!empty($credit)) {
+		foreach ($credit as $k => $value) {
+			$CreditMont[] = $value['montant']; 
+		}
+		$CredMont = (int)array_sum($CreditMont);
 	}
-	$CredMont = (int)array_sum($CreditMont);
 }
 require 'projet/view/profile-view.php';
 ?>

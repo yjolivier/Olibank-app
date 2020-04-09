@@ -3,14 +3,14 @@
 			<div class="card-container">
 				<div class="row card-container-small">
 					<div class="card-left col-lg-6 col-md-6 col-sm-12 ">
-						<form id="formulaire" method="POST" action="connexion.php">
+						<form id="formulaire" method="POST">
 							<div class="container-form">
 								<h1>Connectez vous ici</h1>
 								<input class="champdesaisir" type="email" name="mailconnect" placeholder="Adresse mail"> <br>
 								<input class="champdesaisir" type="password" name="mdpconnect" placeholder="Password"> <br>
 								<input class="form-bouton" name="connexion" type="submit" value="Se connecter" />
 								<p>
-									Je veux creer <a href="inscription.php">un compte</a><br>
+									Je veux creer <a href="index.php?action=inscription">un compte</a><br>
 									<?php
 										if (isset($_SESSION['erreur'])) {
 											echo '<br><font color="red">' . $_SESSION['erreur'] . '</font>';

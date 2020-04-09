@@ -1,8 +1,49 @@
-<?php 
+<?php
 session_start();
-	require "projet/model.php";
-	
-	//Verification des donnees envoyees
+require('projet/model.php');
+
+function connexion(){
+  if (isset($_POST['connexion'])) {
+		$mailconnect = htmlspecialchars($_POST['mailconnect']);
+		$mdpconnect = sha1($_POST['mdpconnect']);
+
+		if (!empty($_POST['mailconnect']) AND !empty($_POST['mdpconnect'])) {
+			if (filter_var($mailconnect, FILTER_VALIDATE_EMAIL)) {
+				$requser = SelectUser($mailconnect);
+				$userexist = $requser->rowCount();
+				if ($userexist == 1) {
+					$userinfo = $requser->fetch();
+					$_SESSION['id'] = $userinfo['id'];
+					$_SESSION['email'] = $userinfo['email'];
+					$_SESSION['nom'] = $userinfo['nom'];
+					$_SESSION['prenoms'] = $userinfo['prenoms'];
+					header("location: profile.php?id=".$_SESSION['id']);
+				}
+				else {
+					$erreur = 'Adresse mail ou mot de passe incorrect';
+					$_SESSION['erreur'] = $erreur;
+					header("location: index.php");
+				}
+			}
+			else {
+				$erreur = 'L\'adresse mail est invalide';
+				header("location: index.php");
+				$_SESSION['erreur'] = $erreur;
+			}
+		}
+		else{
+			$erreur = 'Tout les champs doivent être remplient';
+			$_SESSION['erreur'] = $erreur;
+			header("location: index.php");
+		}
+	}
+  require 'header.php';
+	require 'projet/view/ConnexionView.php';
+	require 'footer.php'; 
+}
+
+function inscription(){
+  //Verification des donnees envoyees
 	if (isset($_POST['inscription'])) {
 
 		//protection des donnees avec la fonction htmlspecialchars et password_hash
@@ -64,4 +105,5 @@ session_start();
 	require 'header.php';
 	require 'projet/view/inscription-view.php';
 	require 'footer.php'; 
-?>
+}
+

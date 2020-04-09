@@ -44,15 +44,17 @@
 							<div class="solde-content">
 								<h2>
 								<?php
-									if ($CredMont < $DebMont) {
-										$solde = $DebMont - $CredMont;
-										$_SESSION['mbrsolde'] = $solde;
-										echo 'Solde crediteure : '.$solde;
-									}
-									else {
-										$solde = $CredMont - $DebMont;
-										$_SESSION['mbrsolde'] = $solde;
-										echo 'Solde Debiteure : '.$solde.' F';
+									if (isset($CredMont) AND isset($DebMont)){
+										if ($CredMont < $DebMont) {
+											$solde = $DebMont - $CredMont;
+											$_SESSION['mbrsolde'] = $solde;
+											echo 'Solde crediteure : '.$solde;
+										}
+										else {
+											$solde = $CredMont - $DebMont;
+											$_SESSION['mbrsolde'] = $solde;
+											echo 'Solde Debiteure : '.$solde.' F';
+										}
 									}
 								?>
 								</h2>
@@ -78,12 +80,12 @@
 											<th>date</th>
 											<th>montant</th>
 										</tr>
-										<?php foreach ($debit as $k => $value) {?>
+										<?php if(!empty($debit)){ foreach ($debit as $k => $value) {?>
 										<tr>
 											<td><?= $value['date'] ?></td>
 											<td><?= $value['montant']?></td>
 										</tr>
-										<?php } ?>
+										<?php }} ?>
 									</tbody>
 								</table>
 								<table id="debit-credit" class="col-6" border="1">
@@ -97,12 +99,12 @@
 											<th>date</th>
 											<th>montant</th>
 										</tr>
-										<?php foreach ($credit as $k => $value) {?>
+										<?php if(!empty($credit)){ foreach ($credit as $k => $value) {?>
 										<tr>
 											<td><?= $value['date'] ?></td>
 											<td><?= $value['montant']?></td>
 										</tr>
-										<?php } ?>
+										<?php } }?>
 									</tbody>
 								</table>
 							</div>

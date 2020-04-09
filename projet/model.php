@@ -25,8 +25,10 @@ function FetchDebit($UserId){
       "montant" => (int)$reponse['montant'],
 			"date" => $reponse['date_debit']
 		);
-	}
-  return $debit;
+  }
+  if (!empty($debit)) {
+    return $debit;
+  }
 }
 
 //Select all user credit info
@@ -40,7 +42,9 @@ function FetchCredit($UserId){
 			"date" => $repcred['date_credit']
 		);
   }
-  return $credit;
+  if (!empty($credit)) {
+    return $credit;
+  }
 }
 
 // Membre insert into data base 
