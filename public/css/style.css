@@ -37,7 +37,7 @@ overflow-x: hidden;
 }
 
 .card-right {
-  background-image: url("../../img/slider.jpg");
+  background-image: url("../img/slider.jpg");
   background-size: cover;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
   -ms-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
@@ -172,7 +172,7 @@ Slider
   padding: 0px;
   margin: 0px;
   width: 100%;
-  background-image: url('../../img/slide.jpg');
+  background-image: url('../img/slide.jpg');
   background-size: cover;
 }
 

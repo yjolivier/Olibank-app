@@ -1,6 +1,6 @@
 <?php
 session_start();
-	require "projet/model.php";
+	require "model/model.php";
 	$title = '';
 	$solde = 0;
 
@@ -28,5 +28,5 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		$CredMont = (int)array_sum($CreditMont);
 	}
 }
-require 'projet/view/profile-view.php';
+require 'view/profile-view.php';
 ?>

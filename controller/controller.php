@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('projet/model.php');
+require('model/model.php');
 
 function connexion(){
   if (isset($_POST['connexion'])) {
@@ -38,7 +38,7 @@ function connexion(){
 		}
 	}
   require 'header.php';
-	require 'projet/view/ConnexionView.php';
+	require 'view/ConnexionView.php';
 	require 'footer.php'; 
 }
 
@@ -103,7 +103,7 @@ function inscription(){
 		}
 	}
 	require 'header.php';
-	require 'projet/view/inscription-view.php';
+	require 'view/inscription-view.php';
 	require 'footer.php'; 
 }
 

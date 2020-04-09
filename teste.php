@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "projet/model.php";
+require "model/model.php";
 require 'header.php';
   $oui = "oui";
 	$title = '';

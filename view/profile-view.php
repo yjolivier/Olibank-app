@@ -37,7 +37,7 @@
 				<div class="content-card-left col-lg-6">
 					<div class="row">
 						<div class="card-img col-12">
-							<img src="projet/img/slide.jpg" alt="..." >
+							<img src="public/img/slide.jpg" alt="..." >
 						</div>
 						<div class="title col-12">
 							<h2><?php echo $userinfo['nom'] . ' ' . $userinfo['prenoms']?></h2>

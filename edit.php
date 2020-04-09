@@ -1,6 +1,6 @@
 <?php 
 session_start();
-	require "projet/model.php";
+	require "model/model.php";
 	//connexin a la base de donnée
   $bdd = dbConnect();
   if(isset($_GET['id']) AND $_GET['id'] > 0){
