@@ -61,6 +61,14 @@ function update($nom,$prenom,$email,$mdp){
   $bdd = dbConnect();
   $UpdatMbr = $bdd->prepare("UPDATE membres SET nom = $nom, prenoms = $prenoms, mail = $email, mdpass = $mdp WHERE id = $getid");
 }
+
+//Select admin info
+function SelectAdmin($mailadmin, $mdpadmin){
+  $bdd = dbConnect();
+  $requser = $bdd->prepare("SELECT * FROM administrateur WHERE mail = ? AND motdepass = ?");
+  $requser->execute(array($mailadmin, $mdpadmin));
+  return $requser;
+}
 //Connexion a la base de donnee
 function dbConnect(){
   try {

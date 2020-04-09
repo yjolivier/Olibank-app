@@ -10,7 +10,7 @@
 								<input class="champdesaisir" type="password" name="mdpconnect" placeholder="Password"> <br>
 								<input class="form-bouton" name="connexion" type="submit" value="Se connecter" />
 								<p>
-									Je veux creer <a href="index.php?action=inscription">un compte</a><br>
+									Voulez vous creer <a href="index.php?action=inscription">un compte</a> ou est ce que vous etes <a href="index.php?action=admin">Administrateur</a>
 									<?php
 										if (isset($_SESSION['erreur'])) {
 											echo '<br><font color="red">' . $_SESSION['erreur'] . '</font>';

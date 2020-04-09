@@ -38,7 +38,7 @@ function connexion(){
 		}
 	}
   require 'header.php';
-	require 'view/ConnexionView.php';
+	require 'view/frontend/ConnexionView.php';
 	require 'footer.php'; 
 }
 
@@ -103,7 +103,7 @@ function inscription(){
 		}
 	}
 	require 'header.php';
-	require 'view/inscription-view.php';
+	require 'view/frontend/inscription-view.php';
 	require 'footer.php'; 
 }
 
@@ -135,7 +135,7 @@ function profile(){
       $CredMont = (int)array_sum($CreditMont);
     }
   }
-  require 'view/profile-view.php';
+  require 'view/frontend/profile-view.php';
 }
 
 function compte(){
@@ -153,7 +153,7 @@ function compte(){
   }
 
   if ($userinfo){ 
-    require 'view/CompteView.php';
+    require 'view/frontend/CompteView.php';
   }
 }
 
@@ -238,6 +238,44 @@ function edituser(){
   }
   $title = '';
 	require 'header.php';
-	require 'view/EditView.php';
+	require 'view/frontend/EditView.php';
 	require 'footer.php';
+}
+
+function admin(){
+	if (isset($_POST['connexionadmin'])) {
+		$mailadmin = htmlspecialchars($_POST['mailadmin']);
+		$mdpadmin = sha1($_POST['mdpadmin']);
+
+		if (!empty($_POST['mailadmin']) AND !empty($_POST['mdpadmin'])) {
+			if (filter_var($mailadmin, FILTER_VALIDATE_EMAIL)) {
+				$requser = SelectAdmin($mailadmin, $mdpadmin);
+				$userexist = $requser->rowCount();
+				if ($userexist == 1) {
+					$userinfo = $requser->fetch();
+					$_SESSION['adminid'] = $userinfo['id'];
+						header("location: admin.php?id=".$_SESSION['adminid']);
+				}
+				else {
+					$erreur = 'Adresse mail ou mot de passe incorrect';
+					$_SESSION['erreur'] = $erreur;
+					header("location: index.php");
+				}
+			}
+			else {
+				$erreur = 'L\'adresse mail est invalide';
+				$_SESSION['erreur'] = $erreur;
+				header("location: index.php");
+			}
+		}
+		else{
+			$erreur = 'Tout les champs doivent être remplient';
+			$_SESSION['erreur'] = $erreur;
+			header("location: index.php");
+		}
+	}
+
+require 'header.php';
+require 'View/backend/AdminView.php';
+require 'footer.php'; 
 }

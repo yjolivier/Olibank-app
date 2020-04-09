@@ -1,13 +1,9 @@
-<?php
-// On démarre la session AVANT d'écrire du code HTML
-session_start();
-require 'header.php'; ?>
 	<body >
 		<div class="container-fluid page-body ">
 			<div class="card-container">
 				<div class="row card-container-small">
 					<div class="card-left col-lg-6 col-md-6 col-sm-12 ">
-						<form id="formulaire" method="POST" action="connexion.php">
+						<form id="formulaire" method="POST">
 							<div class="container-form">
 								<h1>Connexion admin</h1>
 								<input class="champdesaisir" type="email" name="mailadmin" placeholder="Adresse mail"> <br>
@@ -29,5 +25,3 @@ require 'header.php'; ?>
 			</div>
 		</div>
 	</body>
-	<?php require '../footer.php'; ?>
-</html>

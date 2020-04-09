@@ -1,21 +1,3 @@
-<?php
-session_start();
-	require "../projet/model.php";
-	//connexin a la base de donnée
-	$bdd = dbConnect();
-	$solde = 0;
-	$DebMont = 0;
-	$CredMont = 0;
-	
-	if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
-		
-		//Convertir l'id en nombre 
-		$getid = intval($_GET['id']);
-		$reqadmin = $bdd->prepare("SELECT * FROM administrateur WHERE id = ?");
-		$reqadmin->execute(array($getid));
-		$admininfo = $reqadmin->fetch();
-?>
-<?php require 'header.php'; ?>
 	<body>
 		<div class="container-fluid">
 			<header class="row sticky-top">
@@ -38,7 +20,7 @@ session_start();
 										<a class="nav-link" href="#">compte</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="deconnexion.php">Deconnexion</a>
+										<a class="nav-link" href="admin.php?action=deconnexion">Deconnexion</a>
 									</li>
 								</ul>
 							</div>
@@ -69,33 +51,29 @@ session_start();
 								</thead>
 								<tbody>
 								<?php
+									$bdd = dbConnect();
 									$requser = $bdd->query("SELECT id, nom, prenoms, mail,  DATE_FORMAT(date_inscription, '%d/%m/%Y') AS date_inscription FROM membres");
+ 									
 									while ($userinfo = $requser->fetch()):
 										$userid = (int)$userinfo['id'];
 
 										//recuperer tout les debits
-										$reqdeb = $bdd->query("SELECT montant FROM compte_debit_client WHERE id_membre = $userid ");
-										while ($reponse = $reqdeb->fetch()) {
-											$debit[] = array(
-												"montant" => (int)$reponse['montant']
-											);
-										}
-										foreach ($debit as $k => $value) {
-											$DebitMont[] = $value['montant']; 
+										$debit = UserDebitInfo($userid);
+										if (!empty($debit)) {
+											foreach ($debit as $k => $value) {
+												$DebitMont[] = $value['montant']; 
+											}
 										}
 										$DebMont = array_sum($DebitMont);
 										$debit = [];
 										$DebitMont = [];
 
 										//recuperer tout les credits
-										$reqcred = $bdd->query("SELECT montant FROM compte_credit_client WHERE id_membre = $userid");
-										while ($reponse = $reqcred->fetch()) {
-											$credit[] = array(
-												"montant" => (int)$reponse['montant']
-											);
-										}
-										foreach ($credit as $k => $value) {
-											$CreditMont[] = $value['montant']; 
+										$credit = UserCreditInfo($userid);
+										if (!empty($credit)){
+											foreach ($credit as $k => $value) {
+												$CreditMont[] = $value['montant']; 
+											}
 										}
 										$CredMont = array_sum($CreditMont);
 										$credit = [];
@@ -115,9 +93,9 @@ session_start();
 												$DebMont = 0;
 												?>
 										</td>
-										<td align="center"><a href="debit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
-										<td align="center"><a href="credit.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-user-edit"></i></a></td>
-										<td align="center"><a href="delete.php?id=<?= $userinfo['id'] ?>"><i class="fas fa-trash-alt"></i></a></td>
+										<td align="center"><a href="admin.php?id=<?= $userinfo['id'] ?>&action=debit"><i class="fas fa-user-edit"></i></a></td>
+										<td align="center"><a href="admin.php?id=<?= $userinfo['id'] ?>&action=credit"><i class="fas fa-user-edit"></i></a></td>
+										<td align="center"><a href="admin.php?id=<?= $userinfo['id'] ?>&action=supprimer"><i class="fas fa-trash-alt"></i></a></td>
 									</tr>
 										<?php
 											endwhile; 
@@ -141,8 +119,3 @@ session_start();
 			</footer>
 		</div>
 	</body>
-	<?php require '../footer.php'; ?>
-</html>
-<?php
-}
-?>
