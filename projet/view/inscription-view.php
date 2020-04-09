@@ -6,7 +6,7 @@
 						<form id="formulaire" method="POST" action="">
 							<div class="container-form inscription-form">
 								<h1>Inscrivez vous ici</h1>
-								<p>Je veux me <a href="connexion.php">connecter</a> j'ai deja un compte <br>
+								<p>Je veux me <a href="index.php">connecter</a> j'ai deja un compte <br>
 								<?php
 									if (isset($_SESSION['inscrierreur'])) {
 										echo '<font color="#e32b17">' . $_SESSION['inscrierreur'] . '</font>'; 
