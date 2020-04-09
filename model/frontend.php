@@ -51,7 +51,15 @@ function FetchCredit($UserId){
 function MbrInsert($nom, $prenoms, $email, $mdp){
   $bdd = dbConnect();
   $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenoms, mail, mdpass, date_inscription) VALUES(?, ?, ?, ?, NOW())");
-	$insertmbr->execute(array($nom, $prenoms, $email, $mdp));
+  $insertmbr->execute(array($nom, $prenoms, $email, $mdp));
+  $LastId = $bdd->lastInsertId();
+  return $LastId;
+}
+
+// Membre insert into data base 
+function update($nom,$prenom,$email,$mdp){
+  $bdd = dbConnect();
+  $UpdatMbr = $bdd->prepare("UPDATE membres SET nom = $nom, prenoms = $prenoms, mail = $email, mdpass = $mdp WHERE id = $getid");
 }
 //Connexion a la base de donnee
 function dbConnect(){

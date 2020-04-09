@@ -15,16 +15,16 @@
 							<div class="collapse  navbar-collapse" id="collapse_target">
 								<ul class="navbar-nav">
 									<li class="nav-item">
-										<a class="nav-link" href="profile.php?id=<?= $_SESSION['id']?>">ACCUEIL</a>
+										<a class="nav-link" href="page.php?id=<?= $_SESSION['id']?>">ACCUEIL</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="compte.php?id=<?= $_SESSION['id']?>">compte</a>
+										<a class="nav-link" href="page.php?id=<?= $_SESSION['id']?>&value=compte">compte</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="contacte.php">CONTACTE</a>
+										<a class="nav-link" href="page.php?id=<?= $_SESSION['id']?>&value=contacte">CONTACTE</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="deconnexion.php">Deconnexion</a>
+										<a class="nav-link" href="page.php?value=deconnexion">Deconnexion</a>
 									</li>
 								</ul>
 							</div>
