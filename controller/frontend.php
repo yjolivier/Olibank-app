@@ -37,6 +37,7 @@ function connexion(){
 			header("location: index.php");
 		}
 	}
+	$title = 'connexion';
   require 'header.php';
 	require 'view/frontend/ConnexionView.php';
 	require 'footer.php'; 
@@ -102,13 +103,14 @@ function inscription(){
 			$_SESSION['inscrierreur'] = $erreur;
 		}
 	}
+	$title ='Inscription';
 	require 'header.php';
 	require 'view/frontend/inscription-view.php';
 	require 'footer.php'; 
 }
 
 function profile(){
-  $title = '';
+  $title = 'Espace membre';
 	$solde = 0;
 
   if (isset($_GET['id']) AND $_GET['id'] > 0) {
@@ -139,7 +141,7 @@ function profile(){
 }
 
 function compte(){
-  $title = '';
+  $title = 'Compte Infos';
   require 'header.php';
 
   if (isset($_GET['id']) AND $_GET['id'] > 0) {
@@ -164,6 +166,7 @@ function deconnexion(){
 }
 
 function edituser(){
+	$title = "Edite User";
 	if(isset($_GET['id']) AND $_GET['id'] > 0){
     //Convertir l'id en nombre
 	  $getid = intval($_GET['id']);
@@ -233,13 +236,13 @@ function edituser(){
       }
     }
   }
-  $title = '';
 	require 'header.php';
 	require 'view/frontend/EditView.php';
 	require 'footer.php';
 }
 
 function admin(){
+	$title = "Admin Connect";
 	if (isset($_POST['connexionadmin'])) {
 		$mailadmin = htmlspecialchars($_POST['mailadmin']);
 		$mdpadmin = sha1($_POST['mdpadmin']);
@@ -278,6 +281,7 @@ require 'footer.php';
 }
 
 function contacte(){
+	$title = 'Contacte';
 	$bdd = dbConnect();
 	$req = $bdd->query("SELECT * FROM administrateur");
 	$req = $req->fetch();

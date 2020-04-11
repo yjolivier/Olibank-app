@@ -6,7 +6,7 @@ function profileAdmin(){
 	$solde = 0;
 	$DebMont = 0;
 	$CredMont = 0;
-	
+	$title = 'Espace Admin';
 	if (isset($_GET['id']) AND $_GET['id'] == $_SESSION['adminid']) {
 		
 		//Convertir l'id en nombre 
@@ -22,7 +22,7 @@ function profileAdmin(){
 
 function debit(){
 	require 'header.php';
-	$title = '';
+	$title = 'Debit Compte';
 	if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
 		//Convertir l'id en nombre
@@ -44,7 +44,7 @@ function debit(){
 }
 
 function credit(){
-	$title = '';
+	$title = 'Credit Compte';
 	require 'header.php';
 	if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
@@ -67,7 +67,7 @@ function credit(){
 }
 
 function supprimer(){
-	$title = '';
+	$title = 'Suppression compte';
 	require 'header.php';
   $oui = "oui";
 	if (isset($_GET['id']) AND $_GET['id'] > 0) {
@@ -96,7 +96,7 @@ function deconnexion(){
 }
 
 function compte(){
-	$title = "";
+	$title = "Info compte";
 	if (isset($_GET['id']) AND $_GET['id'] == $_SESSION['adminid']) {
 		
 		//Convertir l'id en nombre 
@@ -183,7 +183,6 @@ function EditAdmin(){
       }
     }
   }
-  $title = '';
 	require 'header.php';
 	require 'view/backend/AdminEditView.php';
 	require 'footer.php';
