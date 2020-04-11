@@ -168,39 +168,72 @@ Slider
 ================================================================================================
 */
 .slider{
-  height: 100px;
+  height: 220px;
   padding: 0px;
   margin: 0px;
   width: 100%;
-  background-image: url('../img/slide.jpg');
+  background-image: url('../img/slide1.png');
   background-size: cover;
+  position: relative;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  color: #fff;
 }
-
+.slider h1{
+  font-size: 5.5rem;
+  margin-top: 35px;
+  height: 5.9rem;
+  text-shadow:  -1px 0px 6px rgba(0,1,1,0.44);
+}
 /*
 ================================================================================================
 Profile content 
 ================================================================================================
 */
+.profile-container.container-fluid{
+  height: 100vh;
+}
+.profile-page-container{
+  /*padding: 50px;*/
+
+} 
+.profile-page-content{
+  background-color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: -50px;
+}
 .content-card-left{
-  height: auto;
-  overflow: hidden;
-}
-.content-card-left .card-img{
-  height: 350px;
-  overflow: hidden;
-}
-.content-card-left .card-img img{
-  max-width: 100%;
   height: auto;
 }
 .content-card-left .title {
-  margin-top: 12px;
+  padding-top: 10px;
+  padding-bottom: 3px;
   text-transform: uppercase;
   color: #d44829;
+  padding-left: 0px;
 }
+.content-card-left .title h2{
+  font-size: 2.8rem;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  color: #4B4242;
+}
+.content-card-left .card-img{
+  height: 200px;
+  background-image: url('../img/slide1.png');
+  background-size: cover;
+  color: #fff;
+}
+.content-card-left .card-img h2{
+  margin-top: ;
+  font-size: 4.8rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
 table {
-  margin-top: 20px;
   border: solid 1px #E4E4E4;
+  margin-top: 50px;
 }
 table thead th {
   padding: 10px;
@@ -229,12 +262,6 @@ table tbody td {
 Page style
 ===========================================================================================
 */
-.profile-container.container-fluid{
-  height: 100vh;
-}
-.profile-container .page-container{
-  padding: 50px;
-} 
 .page-container{
   font-family: 'montserrat';
   height: 100vh;
