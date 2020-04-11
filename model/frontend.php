@@ -57,9 +57,10 @@ function MbrInsert($nom, $prenoms, $email, $mdp){
 }
 
 // Membre insert into data base 
-function update($nom,$prenom,$email,$mdp){
+function update($nom,$prenoms,$email,$mdp,$getid){
   $bdd = dbConnect();
-  $UpdatMbr = $bdd->prepare("UPDATE membres SET nom = $nom, prenoms = $prenoms, mail = $email, mdpass = $mdp WHERE id = $getid");
+  $req = $bdd->prepare("UPDATE membres SET nom = ?, prenoms = ?, mail = ?, mdpass = ? WHERE id = $getid");
+	$req->execute(array($nom, $prenoms, $email, $mdp));
 }
 
 //Select admin info

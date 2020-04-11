@@ -1,6 +1,6 @@
 <?php require 'header.php'; ?>
 <body>
-		<div class="container-fluid">
+		<div class="container-fluid profile-container">
 			<header class="row sticky-top">
 					<div class="header-logo col-lg-4 col-sm-6 col-6">
 						<h2>Espace Client</h2>

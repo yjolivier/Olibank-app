@@ -157,11 +157,6 @@ function compte(){
   }
 }
 
-
-function contacte(){
-  #...
-}
-
 function deconnexion(){
   $_SESSION = array();
   session_destroy();
@@ -207,7 +202,9 @@ function edituser(){
               //On compare les deux mots de passe
               if ($_POST['mdp'] === $_POST['mdp2']) {
                 $mdp = sha1($_POST['mdp']);
-                update($nom,$prenom,$email,$mdp);
+								$bdd = dbConnect();
+								$bdd->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+  							update($nom,$prenoms,$email,$mdp,$getid);
                 header("location: page.php?id=".$getid);
               }
               else {
@@ -278,4 +275,14 @@ function admin(){
 require 'header.php';
 require 'View/backend/AdminView.php';
 require 'footer.php'; 
+}
+
+function contacte(){
+	$bdd = dbConnect();
+	$req = $bdd->query("SELECT * FROM administrateur");
+	$req = $req->fetch();
+
+	require 'header.php';
+	require 'view/frontend/ContacteView.php';
+	require 'footer.php';
 }

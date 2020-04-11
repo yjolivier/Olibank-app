@@ -5,15 +5,14 @@ function AdminInfo($AdminId){
   $bdd = dbConnect();
   $reqadmin = $bdd->prepare("SELECT * FROM administrateur WHERE id = ?");
   $reqadmin->execute(array($AdminId));
-  return $reqadmin;
+  return $reqadmin->fetch();
 }
 
 //Select admin info
-function SelectAdmin($mailadmin, $mdpadmin){
+function SelectAdmin($mailadmin){
   $bdd = dbConnect();
-  $requser = $bdd->prepare("SELECT * FROM administrateur WHERE mail = ? AND motdepass = ?");
-  $requser->execute(array($mailadmin, $mdpadmin));
-  return $requser;
+  $requser = $bdd->prepare("SELECT * FROM administrateur WHERE mail = ?");
+  $requser->execute(array($mailadmin));
 }
 
 
@@ -74,6 +73,12 @@ function DeleteMembre($UserId){
   $req->execute(array($UserId));
 }
 
+function UpdateAdmin($nom, $contacte, $email, $mdp, $getid){
+  $bdd = dbConnect();
+	$bdd->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+	$req = $bdd->prepare("UPDATE administrateur SET nom = ?, contacte = ?, mail = ?, motdepass = ? WHERE id = $getid");
+	$req->execute(array($nom, $contacte, $email, $mdp));
+}
 //Connexion a la base de donnee
 function dbConnect(){
   try {

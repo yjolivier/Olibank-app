@@ -181,11 +181,6 @@ Slider
 Profile content 
 ================================================================================================
 */
-.page-content{
-  margin-top: 15px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
 .content-card-left{
   height: auto;
   overflow: hidden;
@@ -234,7 +229,12 @@ table tbody td {
 Page style
 ===========================================================================================
 */
-
+.profile-container.container-fluid{
+  height: 100vh;
+}
+.profile-container .page-container{
+  padding: 50px;
+} 
 .page-container{
   font-family: 'montserrat';
   height: 100vh;
@@ -274,9 +274,14 @@ Page style
   text-transform: uppercase;
   font-family: 'Quicksand', sans-serif;
 }
+.page-content .top-card .info-section .info-section-content .info table{
+  border: 0px;
+}
 .page-content .top-card .info-section .info-section-content .info table td{
   padding: 10px;
   color: #D44829;
+  background-color: #fff;
+  border: 0px;
 }
 .page-content .top-card .back-button a{
   padding: 9px;
@@ -298,25 +303,24 @@ Page style
 }
 
 .page-content .top-card .info-section .page-form .pagechamp {
-    padding: 10px;
-    width: 100%;
-    background: #000;
-    border: 0px;
-    color: #fff;
-    font-size: 1.5em;
+  padding: 10px;
+  width: 100%;
+  background: #000;
+  border: 0px;
+  color: #fff;
+  font-size: 1.5em;
 
 }
 .page-content .top-card .info-section .page-form #pagesubmit {
-
-    padding: 10px;
-    background: #D44829;
-    color: #fff;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    width: 100%;
-    border-radius: 7px;
-    margin-top: 9px;
-    border: 0px;
+  padding: 10px;
+  background: #D44829;
+  color: #fff;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 7px;
+  margin-top: 9px;
+  border: 0px;
 }
 .page-content .top-card .info-section .page-form #pagesubmit:hover{
   -webkit-box-shadow: 0px 0px 8px 0px rgba(80, 78, 78, 0.75);
@@ -371,31 +375,31 @@ footer.row p {
   margin-top: 50px;
   padding: 15px;
 }
-.delete-container .delete-content .button-container a{
+.button-container a{
   text-decoration: none;
   color: #fff;
   font-size: 1.9em;
   font-weight: 500;
 }
-.delete-container .delete-content .button-container{
+.button-container{
   display: flex;
   justify-content: space-around;
 }
-.delete-container .delete-content .button-container .delete-button{
+.button-container .delete-button{
   width: 15%;
   padding: 10px;
   border-radius: 7px;
 }
-.delete-container .delete-content .button-container .delete-button.non{
+.button-container .delete-button{
   background-color: #4287f5;
 }
-.delete-container .delete-content .button-container .delete-button.non:hover{
+.button-container .delete-button:hover{
   background-color: #2e5eab;
 }
-.delete-container .delete-content .button-container .delete-button.oui{
+.button-container .delete-button.oui{
   background-color: #cf2b2b;
 }
-.delete-container .delete-content .button-container .delete-button.oui:hover{
+.button-container .delete-button.oui:hover{
   background-color: #a11f1f;
 }
 
@@ -533,11 +537,36 @@ body {
   .container-form h1 {
     font-size: 3.5rem;
   }
+  .page-content .top-card .info-section .info-section-content{
+    width: 40%;
+  }
 }
+/*screen resolution <= 1024 */
+@media screen and (max-width: 900px) {
+  .page-content .top-card .info-section .info-section-content{
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 720px) {
   .card-right {
     display: none;
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+/*screen resolution <= 650 */
+@media screen and (max-width: 650px) {
+  .page-content .top-card .info-section .info-section-content{
+    width: 90%;
+    left: 32px;
+    top: 20px;
+  }
+}
+
+/*screen resolution <= 375 */
+@media screen and (max-width: 375px) {
+  .page-content .top-card .info-section .info-section-content{
+    left: 18px;
+  }
+
+}

@@ -14,10 +14,10 @@
 							<div class="collapse  navbar-collapse" id="collapse_target">
 								<ul class="navbar-nav">
 									<li class="nav-item">
-										<a class="nav-link" href="#">ACCUEIL</a>
+										<a class="nav-link" href="admin.php?id=<?= $_SESSION['adminid']?>">ACCUEIL</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#">compte</a>
+										<a class="nav-link" href="admin.php?id=<?= $_SESSION['adminid']?>&action=compte">compte</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="admin.php?action=deconnexion">Deconnexion</a>

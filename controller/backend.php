@@ -7,12 +7,12 @@ function profileAdmin(){
 	$DebMont = 0;
 	$CredMont = 0;
 	
-	if (isset($_GET['id']) AND $_GET['id'] = $_SESSION['adminid']) {
+	if (isset($_GET['id']) AND $_GET['id'] == $_SESSION['adminid']) {
 		
 		//Convertir l'id en nombre 
 		$getid = intval($_GET['id']);
 		$reqadmin = AdminInfo($getid);
-		$admininfo = $reqadmin->fetch();
+		$admininfo = $reqadmin;
 		
 		require 'header.php';
 		require 'view/backend/AdminProfileView.php';
@@ -93,4 +93,98 @@ function deconnexion(){
 	$_SESSION = array();
 	session_destroy();
 	header("location: index.php");
+}
+
+function compte(){
+	$title = "";
+	if (isset($_GET['id']) AND $_GET['id'] == $_SESSION['adminid']) {
+		
+		//Convertir l'id en nombre 
+		$getid = intval($_GET['id']);
+		$reqadmin = AdminInfo($getid);
+		$admininfo = $reqadmin;
+		
+		require 'header.php';
+		require 'view/backend/AdminCompteView.php';
+		require 'footer.php';
+	}
+
+}
+
+function EditAdmin(){
+	$title = "Edit admin";
+	if(isset($_GET['id']) AND $_GET['id'] > 0){
+		//Convertir l'id en nombre
+	  $getid = intval($_GET['id']);
+	  $admininfo = AdminInfo($getid);
+    $_SESSION['editnom'] = $admininfo['nom'];
+    $_SESSION['editcontacte'] = $admininfo['contacte'];
+    $_SESSION['editemail'] = $admininfo['mail'];
+		$_SESSION['editemail2'] = $admininfo['mail'];
+
+		if (isset($_POST['editer'])) {
+
+      //protection des donnees avec la fonction htmlspecialchars et password_hash
+      $nom = htmlspecialchars($_POST['nom']);
+      $contacte = htmlspecialchars($_POST['contacte']);
+      $email = htmlspecialchars($_POST['email']);
+      $email2 = htmlspecialchars($_POST['email2']);
+      $_SESSION['editnom'] = $nom;
+      $_SESSION['editcontacte'] = $contacte;
+      $_SESSION['editemail'] = $email;
+      $_SESSION['editemail2'] = $email2;
+      /*$mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);*/
+      if (
+        !empty($_POST['nom']) AND 
+        !empty($_POST['contacte']) AND 
+        !empty($_POST['email']) AND 
+        !empty($_POST['email2']) AND 
+        !empty($_POST['mdp']) AND 
+        !empty($_POST['mdp2'])) 
+      {
+        if ($email === $email2) {
+          if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+						//Verifions si le mail existe deja ou pas.
+						$bdd = dbConnect();
+  					$requser = $bdd->prepare("SELECT * FROM administrateur WHERE mail = ?");
+  					$requser->execute(array($email));
+            $emailexist = $requser->rowCount();
+            if ($emailexist == 0 OR $getid == $admininfo['id']) {
+              //On compare les deux mots de passe
+              if ($_POST['mdp'] === $_POST['mdp2']) {
+								$mdp = sha1($_POST['mdp']);
+								UpdateAdmin($nom, $contacte, $email, $mdp, $getid);
+								$_SESSION['id'] = $getid;
+                header("location: admin.php?id=".$getid);
+              }
+              else {
+                $erreur = 'Les deux mot de passe sont differents';
+                $_SESSION['editerreur'] = $erreur;
+              }
+            }
+            else {
+              $erreur = 'L\'adresse mail existe deja';
+              $_SESSION['editerreur'] = $erreur;
+            }
+          }
+          else {
+            $erreur = 'L\'adresse mail n\'est pas valide';
+            $_SESSION['editerreur'] = $erreur;
+          }
+        }
+        else {
+          $erreur = "Les adresses mail doivent etre identique !";
+          $_SESSION['editerreur'] = $erreur;
+        }
+      }
+      else {
+        $erreur = "Veuillez renseigner toutes les informations !";
+        $_SESSION['editerreur'] = $erreur;
+      }
+    }
+  }
+  $title = '';
+	require 'header.php';
+	require 'view/backend/AdminEditView.php';
+	require 'footer.php';
 }

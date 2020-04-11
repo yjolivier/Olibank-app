@@ -130,7 +130,7 @@
   }
 }
 
-/*screen resolution <= 1024 */
+/*screen resolution <= 375 */
 @media screen and (max-width: 375px) {
   .page-content .top-card .info-section .info-section-content{
     left: 18px;

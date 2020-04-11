@@ -14,6 +14,12 @@ if (isset($_GET['action'])) {
 	elseif ($_GET['action'] == 'deconnexion') {
 		deconnexion();
 	}
+	elseif ($_GET['action'] == 'compte') {
+		compte();
+	}
+	elseif ($_GET['action'] == 'edit') {
+		EditAdmin();
+	}
 }
 else {
 	profileAdmin();

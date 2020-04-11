@@ -14,6 +14,9 @@ if (isset($_GET['value'])) {
 	elseif ($_GET['value'] == 'edit') {
 		edituser();
 	}
+	elseif ($_GET['value'] == 'contate') {
+		contacte();
+	}
 }
 else {
 	profile();
