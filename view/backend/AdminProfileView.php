@@ -1,32 +1,19 @@
 	<body>
 		<div class="container-fluid profile-container">
-			<header class="row sticky-top">
-					<div class="header-logo col-lg-4 col-sm-6 col-6">
-						<h2>Espace Admin</h2>
-					</div>
-					<div class="header-menu col-lg-8 col-sm-6 col-6">
-						<nav class="navbar navbar-expand-md navbar-white bg-transparent">
-							<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
-								<span class="navbar-toggler-icon btn-menu">
-									<i class="fas fa-align-justify"></i>
-								</span>
-							</button>
-							<div class="collapse  navbar-collapse" id="collapse_target">
-								<ul class="navbar-nav">
-									<li class="nav-item">
-										<a class="nav-link" href="admin.php?id=<?= $_SESSION['adminid']?>">ACCUEIL</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="admin.php?id=<?= $_SESSION['adminid']?>&action=compte">compte</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="admin.php?action=deconnexion">Deconnexion</a>
-									</li>
-								</ul>
-							</div>
-						</nav>
-					</div>
-			</header>
+			<header>
+				<input type="checkbox" id="check">
+				<label for="check" class="checkbtn">
+					<i class="fas fa-bars"></i>
+				</label>
+				<div class="logo">
+					<img src="public/img/logo.png" alt="...">
+				</div>
+				<ul>
+					<li><a href="admin.php?id=<?= $_SESSION['adminid']?>">ACCUEIL</a> </li>
+					<li><a class="nav-link" href="admin.php?id=<?= $_SESSION['adminid']?>&action=compte">compte</a></li>
+					<li><a class="nav-link" href="admin.php?action=deconnexion">Deconnexion</a></li>
+				</ul>
+    	</header>
 			<div class="slider row d-flex justify-content-center">
 				<h1>Liste des Clients</h1>
 			</div>

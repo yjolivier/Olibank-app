@@ -14,7 +14,6 @@
 					<li><a class="nav-link" href="page.php?id=<?= $_SESSION['id']?>&value=compte">compte</a></li>
 					<li><a class="nav-link" href="page.php?id=<?= $_SESSION['id']?>&value=contacte">CONTACTE</a></li>
 					<li><a class="nav-link" href="page.php?value=deconnexion">Deconnexion</a></li>
-					<li><a href="#">Portfolio</a> </li>
 				</ul>
     	</header>
 			<?php if(isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id']):?>
