@@ -81,7 +81,7 @@ function UpdateAdmin($nom, $contacte, $email, $mdp, $getid){
 //Connexion a la base de donnee
 function dbConnect(){
   try {
-    $bdd = new PDO('mysql:host=localhost;dbname=olibank;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=olivier-yao_olibank;charset=utf8', 'root', '');
     return $bdd;
   }
   catch (Exception $e) {

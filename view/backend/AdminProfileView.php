@@ -24,7 +24,7 @@
 						<div class="historique-card col-12">
 							<table class="table-admin col-12">
 								<thead>
-									<tr class="sticky-top">
+									<tr class="">
 										<th scope="col" class="id">id</th>
 										<th scope="col">Nom</th>
 										<th scope="col" class="mail">email</th>
