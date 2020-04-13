@@ -1,5 +1,5 @@
 	<body>
-		<div class="container-fluid">
+		<div class="container-fluid profile-container">
 			<header class="row sticky-top">
 					<div class="header-logo col-lg-4 col-sm-6 col-6">
 						<h2>Espace Admin</h2>
@@ -27,36 +27,41 @@
 						</nav>
 					</div>
 			</header>
-			<div class="slider row"></div>
-			<section class="page-content row">
+			<div class="slider row d-flex justify-content-center">
+				<h1>Liste des Clients</h1>
+			</div>
+			<section class="profile-page-container row d-flex justify-content-center">
 			<?php if(isset($_SESSION['adminid']) AND $admininfo['id'] == $_SESSION['adminid']):?>
-				<div class="content-card-left col-lg-10">
+				<div class="profile-page-content col-lg-11">
 					<div class="row">
-						<div class="historique-title col-12">
-							<h1>Liste des Clients</h1>
-						</div>
 						<div class="historique-card col-12">
 							<table class="table-admin col-12">
-								<thead class="">
-									<tr>
-										<th scope="col">id</th>
-										<th scope="col">Nom et Prenoms</th>
-										<th scope="col">email</th>
-										<th scope="col">Date d'Inscription</th>
+								<thead>
+									<tr class="sticky-top">
+										<th scope="col" class="id">id</th>
+										<th scope="col">Nom</th>
+										<th scope="col" class="mail">email</th>
+										<th scope="col" class="date">Date d'Inscription</th>
 										<th scope="col">Solde</th>
-										<th scope="col">Débiter</th>
-										<th scope="col">créditer</th>
-										<th scope="col">Suprimer</th>
+										<th scope="col">Débit</th>
+										<th scope="col">crédit</th>
+										<th scope="col">Supr</th>
+										<th scope="col">Confirme</th>
 									</tr>
 								</thead>
 								<tbody>
 								<?php
 									$bdd = dbConnect();
-									$requser = $bdd->query("SELECT id, nom, prenoms, mail,  DATE_FORMAT(date_inscription, '%d/%m/%Y') AS date_inscription FROM membres");
- 									
+									if (isset($_GET['confirmer']) AND !empty($_GET['confirmer'])) {
+											$confirmer = (int)$_GET['confirmer'];
+											$bdd->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+											$req = $bdd->prepare("UPDATE membres SET confirmer = 1 WHERE id = ?");
+											$req->execute(array($confirmer));													
+									}
+									$requser = $bdd->query("SELECT id, nom, prenoms, mail,  DATE_FORMAT(date_inscription, '%d/%m/%Y') AS date_inscription, confirmer FROM membres ORDER BY id DESC");
+ 											
 									while ($userinfo = $requser->fetch()):
 										$userid = (int)$userinfo['id'];
-
 										//recuperer tout les debits
 										$debit = UserDebitInfo($userid);
 										if (!empty($debit)) {
@@ -64,9 +69,11 @@
 												$DebitMont[] = $value['montant']; 
 											}
 										}
-										$DebMont = array_sum($DebitMont);
-										$debit = [];
-										$DebitMont = [];
+										if (isset($DebitMont)) {
+											$DebMont = array_sum($DebitMont);
+											$debit = [];
+											$DebitMont = [];
+										}
 
 										//recuperer tout les credits
 										$credit = UserCreditInfo($userid);
@@ -75,16 +82,18 @@
 												$CreditMont[] = $value['montant']; 
 											}
 										}
-										$CredMont = array_sum($CreditMont);
-										$credit = [];
-										$CreditMont = [];
+										if (isset($CreditMont)) {
+											$CredMont = array_sum($CreditMont);
+											$credit = [];
+											$CreditMont = [];
+										}
 										$solde = $CredMont - $DebMont;
 										?>
 									<tr>
-										<td scope="row"><?= $userid ?> </td>
+										<td scope="row" class="id"><?= $userid ?> </td>
 										<td><?= $userinfo['nom']." ".$userinfo['prenoms'] ?></td>
-										<td><?= $userinfo['mail'] ?></td>
-										<td><?= $userinfo['date_inscription'] ?></td>
+										<td class="mail"><?= $userinfo['mail'] ?></td>
+										<td class="date"><?= $userinfo['date_inscription'] ?></td>
 										<td>
 
 										<?php 
@@ -96,6 +105,15 @@
 										<td align="center"><a href="admin.php?id=<?= $userinfo['id'] ?>&action=debit"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="admin.php?id=<?= $userinfo['id'] ?>&action=credit"><i class="fas fa-user-edit"></i></a></td>
 										<td align="center"><a href="admin.php?id=<?= $userinfo['id'] ?>&action=supprimer"><i class="fas fa-trash-alt"></i></a></td>
+										<td>
+											<?php if ($userinfo['confirmer'] == 0) {?>
+												<a  href="admin.php?id=<?= $_SESSION['adminid']?>&confirmer=<?= $userinfo['id']?>">confirmer</a>
+											<?php 
+											} else {
+												echo 'actif';
+											}		
+											?>
+										</td>
 									</tr>
 										<?php
 											endwhile; 

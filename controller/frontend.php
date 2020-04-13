@@ -112,7 +112,8 @@ function inscription(){
 function profile(){
   $title = 'Espace membre';
 	$solde = 0;
-
+	$CredMont = 0;
+	$DebMont = 0;
   if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
     //Convertir l'id en nombre
@@ -275,9 +276,9 @@ function admin(){
 		}
 	}
 
-require 'header.php';
-require 'View/backend/AdminView.php';
-require 'footer.php'; 
+	require 'header.php';
+	require 'View/backend/AdminView.php';
+	require 'footer.php'; 
 }
 
 function contacte(){

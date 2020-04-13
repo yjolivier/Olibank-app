@@ -50,7 +50,7 @@ function FetchCredit($UserId){
 // Membre insert into data base 
 function MbrInsert($nom, $prenoms, $email, $mdp){
   $bdd = dbConnect();
-  $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenoms, mail, mdpass, date_inscription) VALUES(?, ?, ?, ?, NOW())");
+  $insertmbr = $bdd->prepare("INSERT INTO membres(nom, prenoms, mail, mdpass, date_inscription, confirmer) VALUES(?, ?, ?, ?, NOW(), 0)");
   $insertmbr->execute(array($nom, $prenoms, $email, $mdp));
   $LastId = $bdd->lastInsertId();
   return $LastId;

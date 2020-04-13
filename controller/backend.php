@@ -6,6 +6,7 @@ function profileAdmin(){
 	$solde = 0;
 	$DebMont = 0;
 	$CredMont = 0;
+	$confirmer = 0;
 	$title = 'Espace Admin';
 	if (isset($_GET['id']) AND $_GET['id'] == $_SESSION['adminid']) {
 		
@@ -13,7 +14,6 @@ function profileAdmin(){
 		$getid = intval($_GET['id']);
 		$reqadmin = AdminInfo($getid);
 		$admininfo = $reqadmin;
-		
 		require 'header.php';
 		require 'view/backend/AdminProfileView.php';
 		require 'footer.php';

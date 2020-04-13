@@ -4,7 +4,8 @@
   <meta charset="utf-8" /> 
   <title>404 error page </title> 
   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
- 
+	<!--Favicon img-->
+	<link rel="icon" type="image/png" href="public/img/logo.png" />
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" /> 
   <link href="public/css/style.css" type="text/css" rel="stylesheet" media="all" /> 
@@ -23,7 +24,7 @@
         <span>404</span>
        </div> 
        <span class="inner-status">Oops! You're lost</span> 
-       <span class="inner-detail" style="color:#fff;"> We can not find the page you're looking for. <a href="index.php" class="btn btn-info mtl"><i class="fa fa-home"></i>&nbsp; Retour accueil</a> </span> 
+       <span class="inner-detail" style="color:#fff;"> Nous ne parvenons pas a trouver la page demandée. <a href="index.php" class="btn btn-info mtl"><i class="fa fa-home"></i>&nbsp; Retour accueil</a> </span> 
       </div> 
      </div> 
     </div> 

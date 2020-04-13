@@ -1,5 +1,5 @@
 <?php
-
+//php debug sql function $bdd->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 //Select admin info where id 
 function AdminInfo($AdminId){
   $bdd = dbConnect();
@@ -75,7 +75,6 @@ function DeleteMembre($UserId){
 
 function UpdateAdmin($nom, $contacte, $email, $mdp, $getid){
   $bdd = dbConnect();
-	$bdd->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 	$req = $bdd->prepare("UPDATE administrateur SET nom = ?, contacte = ?, mail = ?, motdepass = ? WHERE id = $getid");
 	$req->execute(array($nom, $contacte, $email, $mdp));
 }
